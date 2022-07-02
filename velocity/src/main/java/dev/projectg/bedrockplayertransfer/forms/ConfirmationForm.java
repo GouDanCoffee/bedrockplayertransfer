@@ -21,9 +21,9 @@ public class ConfirmationForm {
             FloodgatePlayer fPlayer = FloodgateApi.getInstance().getPlayer(target);
             fPlayer.sendForm(
                     SimpleForm.builder()
-                            .title("Would you like to connect to " + ip + "?")
-                            .button("Yes")
-                            .button("No")
+                            .title("你想要连接至 " + ip + "?")
+                            .button("是")
+                            .button("否")
                             .responseHandler((form, responseData) -> {
                                 SimpleFormResponse response = form.parseResponse(responseData);
                                 if (!response.isCorrect()) {
@@ -36,7 +36,7 @@ public class ConfirmationForm {
                                 } else if (response.getClickedButtonId() == 1) {
                                     // clicked No
                                     Optional<Player> player = VelocityBedrockPlayerTransfer.getPlugin().getProxyServer().getPlayer(target);
-                                    player.ifPresent(p -> p.sendMessage(Component.text("You declined server transferring")));
+                                    player.ifPresent(p -> p.sendMessage(Component.text("你拒绝了传送")));
                                 }
                             }));
         }

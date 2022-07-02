@@ -22,9 +22,9 @@ public class ConfirmationForm {
             FloodgatePlayer fPlayer = FloodgateApi.getInstance().getPlayer(target);
             fPlayer.sendForm(
                     SimpleForm.builder()
-                            .title("Would you like to connect to " + ip + "?")
-                            .button("Yes")
-                            .button("No")
+                            .title("你想要连接至 " + ip + "?")
+                            .button("是")
+                            .button("否")
                             .responseHandler((form, responseData) -> {
                                 SimpleFormResponse response = form.parseResponse(responseData);
                                 if (!response.isCorrect()) {
@@ -38,7 +38,7 @@ public class ConfirmationForm {
                                     // clicked No
                                     ProxiedPlayer getplayer = BungeecordBedrockPlayerTransfer.getPlugin().getProxy().getPlayer(target);
                                     Objects.requireNonNull(getplayer);
-                                    getplayer.sendMessage(new TextComponent("You declined server transferring"));
+                                    getplayer.sendMessage(new TextComponent("你拒绝了传送"));
                                 }
                             }));
         }

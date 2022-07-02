@@ -27,10 +27,10 @@ public class VelocityTransferForm {
             FloodgatePlayer fPlayer = FloodgateApi.getInstance().getPlayer(uuid);
             fPlayer.sendForm(
                     CustomForm.builder()
-                            .title("Transfer Player")
-                            .dropdown("Select Player", playerList)
-                            .input("Server IP")
-                            .input("Server Port")
+                            .title("传送玩家")
+                            .dropdown("选择玩家", playerList)
+                            .input("服务器地址")
+                            .input("服务器端口")
                             .responseHandler((form, responseData) -> {
                                 CustomFormResponse response = form.parseResponse(responseData);
                                 if (!response.isCorrect()) {
@@ -47,7 +47,7 @@ public class VelocityTransferForm {
                                     if (isTargetFloodgatePlayer) {
                                         new ConfirmationForm().confirmation(targetPlayer, serverip, serverport);
                                     } else {
-                                        player.sendMessage(Component.text("You can only transfer bedrock players"));
+                                        player.sendMessage(Component.text("你只能传送基岩玩家"));
                                     }
                                 }
                             }));

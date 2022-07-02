@@ -21,9 +21,9 @@ public class ConfirmationForm {
             FloodgatePlayer fPlayer = FloodgateApi.getInstance().getPlayer(target);
             fPlayer.sendForm(
                     SimpleForm.builder()
-                            .title("Would you like to transfer " + ip + " ?")
-                            .button("Yes")
-                            .button("No")
+                            .title("你想要连接至 " + ip + "?")
+                            .button("是")
+                            .button("否")
                             .responseHandler((form, responseData) -> {
                                 SimpleFormResponse response = form.parseResponse(responseData);
                                 if (!response.isCorrect()) {
@@ -37,7 +37,7 @@ public class ConfirmationForm {
                                     // clicked No
                                     Player player = Bukkit.getPlayer(target);
                                     Objects.requireNonNull(player);
-                                    player.sendMessage("You declined server transferring");
+                                    player.sendMessage("你拒绝了传送");
                                 }
                             }));
         }
